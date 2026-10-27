@@ -1,0 +1,16 @@
+.venv/
+.review/
+.starting-state/
+.pycache/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.key
+*.pem
+*.sqlite3
+*.db
+# Transferred migration references; not an approved runnable deployment.
+/compose.yaml
+/app/Dockerfile
+/HANDOFF-native-startup.md
