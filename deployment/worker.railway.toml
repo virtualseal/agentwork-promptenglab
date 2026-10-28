@@ -1,0 +1,9 @@
+# Source-only opt-in config; never deploy or attach an unreviewed branch.
+# Runtime image/OS/interpreter must be pinned and validated by the admin first.
+[deploy]
+startCommand = "/usr/bin/python3 -B deployment/worker.py"
+numReplicas = 1
+healthcheckPath = "/readyz"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

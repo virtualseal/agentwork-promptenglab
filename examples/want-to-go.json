@@ -1,0 +1,4 @@
+[
+  {"id":"demo-near","name":"Sample San Mateo Restaurant","address":"Demo address — replace with your list","latitude":37.55,"longitude":-122.31,"maps_url":"https://www.google.com/maps/search/?api=1&query=San+Mateo","category":"restaurant"},
+  {"id":"demo-far","name":"Sample San Francisco Restaurant","address":"Demo SF address","latitude":37.78,"longitude":-122.42,"maps_url":"https://www.google.com/maps/search/?api=1&query=San+Francisco","category":"restaurant"}
+]
