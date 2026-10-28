@@ -50,6 +50,35 @@ class CloudTests(unittest.TestCase):
         raw, headers = self.signed(event)
         return (client or self.client).post('/api/sdr/webhooks/nooks',content=raw,headers=headers)
 
+    def test_inbound_registration_sample_is_accepted_but_selected_inbound_is_not_discarded(self):
+        app=receiver.create_app(self.store,self.broker,registration_id='a'*32,deadline=self.now+60,clock=lambda:self.now)
+        client=TestClient(app)
+        selected=copy.deepcopy(self.event)
+        selected['callData']['callDirection']='inbound'
+        with patch('builtins.print'):
+            self.assertEqual(self.post(selected,client=client).status_code,503)
+            self.assertTrue(client.get('/ready').json()['registration_open'])
+            sample=copy.deepcopy(selected)
+            sample['callData']['prospectData']['prospectId']='external-test-prospect'
+            self.assertEqual(self.post(sample,client=client).status_code,204)
+            self.assertFalse(client.get('/ready').json()['registration_open'])
+            self.assertEqual(self.post(sample,client=client).status_code,503)
+        self.assertEqual(self.store.summary()['event_count'],0)
+
+    def test_registration_diagnostics_are_fixed_bounded_and_exclude_private_payload(self):
+        app=receiver.create_app(self.store,self.broker,registration_id='b'*32,deadline=self.now+60,clock=lambda:self.now)
+        client=TestClient(app)
+        sample=copy.deepcopy(self.event)
+        sample['callData']['prospectData']={'email':'private-marker@example.test'}
+        with patch('builtins.print') as output:
+            self.assertEqual(self.post(sample,client=client).status_code,503)
+            self.assertEqual(self.post(sample,client=client).status_code,503)
+            self.assertEqual(output.call_count,1)
+            record=json.loads(output.call_args.args[0])
+        self.assertEqual(record,{'event':'nooks_setup_rejected','reason':'missing_explicit_identity'})
+        self.assertNotIn('private-marker',json.dumps(record))
+        self.assertTrue(client.get('/ready').json()['registration_open'])
+
     def test_signed_provider_call_crosses_authenticated_broker_and_durable_capture(self):
         self.assertEqual(self.client.get('/ready').json()['verifier_ready'],True)
         self.assertEqual(self.post().json(),{'status':'captured'})

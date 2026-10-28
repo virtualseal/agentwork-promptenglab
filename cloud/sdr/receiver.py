@@ -170,6 +170,7 @@ class Broker:
 
 def create_app(store, broker, *, registration_id='', deadline=0, clock=time.time):
     store.configure_registration(registration_id, deadline, clock())
+    setup_diagnostics=set()
     app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 
     @app.get('/healthz')
@@ -200,8 +201,15 @@ def create_app(store, broker, *, registration_id='', deadline=0, clock=time.time
             # signing key is issued. Only an explicit out-of-scope probe can
             # consume setup; a selected or ambiguous call must be retried.
             try:
-                if registration_probe(raw, store.scope) and store.registration(registration_id, clock(), consume=True):
-                    return Response(status_code=204)
+                if store.registration(registration_id,clock()):
+                    reason=registration_reason(raw,store.scope)
+                    if reason in ('empty_probe','outside_scope') and store.registration(registration_id,clock(),consume=True):
+                        print(json.dumps({'event':'nooks_setup_accepted'}),flush=True)
+                        return Response(status_code=204)
+                    if reason not in setup_diagnostics:
+                        setup_diagnostics.add(reason)
+                        # Fixed reason codes only: no request values, headers or errors.
+                        print(json.dumps({'event':'nooks_setup_rejected','reason':reason}),flush=True)
             except Exception:
                 pass
             raise HTTPException(503, 'Event unavailable or rejected.') from None
@@ -209,21 +217,29 @@ def create_app(store, broker, *, registration_id='', deadline=0, clock=time.time
     return app
 
 
-def registration_probe(raw, scope):
+def registration_reason(raw, scope):
     from .common import unique
-    data = json.loads(raw or b'{}', object_pairs_hook=unique)
-    if data == {}:
-        return True
-    if not isinstance(data, dict) or data.get('event') != 'call.logged':
-        return False
-    call = data.get('callData')
-    if not isinstance(call, dict) or not isinstance(call.get('prospectData'), dict):
-        return False
-    workspace, prospect = call.get('workspaceId'), call['prospectData'].get('prospectId')
-    if (any(not isinstance(v, str) or not 1 <= len(v) <= 200 for v in (workspace, prospect))
-            or call.get('status') != 'completed' or call.get('callDirection') != 'outbound'):
-        return False
-    return (workspace, prospect) != (scope['workspace_id'], scope['prospect_id'])
+    try:
+        data=json.loads(raw or b'{}',object_pairs_hook=unique)
+    except Exception:
+        return 'invalid_json'
+    if data == {}: return 'empty_probe'
+    if not isinstance(data,dict) or data.get('event') != 'call.logged': return 'unsupported_event'
+    call=data.get('callData')
+    if not isinstance(call,dict) or not isinstance(call.get('prospectData'),dict): return 'invalid_call_shape'
+    workspace,prospect=call.get('workspaceId'),call['prospectData'].get('prospectId')
+    if any(not isinstance(v,str) or not 1 <= len(v) <= 200 for v in (workspace,prospect)):
+        return 'missing_explicit_identity'
+    if (workspace,prospect)==(scope['workspace_id'],scope['prospect_id']): return 'selected_contact'
+    if call.get('status')!='completed': return 'not_completed'
+    # Nooks' documented setup sample is inbound. Direction is irrelevant to
+    # acknowledging a probe whose explicit identity excludes the selected test.
+    if call.get('callDirection') not in ('outbound','inbound'): return 'unknown_direction'
+    return 'outside_scope'
+
+
+def registration_probe(raw,scope):
+    return registration_reason(raw,scope) in ('empty_probe','outside_scope')
 
 
 def from_environment():

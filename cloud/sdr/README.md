@@ -67,10 +67,13 @@ authentication headers and exceptions are not logged. Access logging is off.
    `REGISTRATION_DEADLINE` to a UTC epoch no more than one hour ahead. This is a
    public one-shot setup ACK, not authentication. Normal signed verification
    runs first, so a real selected-contact call is captured during setup too.
-   The setup fallback accepts only an empty probe or a completed outbound
+   The setup fallback accepts only an empty probe or a completed inbound or outbound
    call-shaped probe with explicit workspace/prospect IDs outside this test's
    selected pair. Selected or ambiguous calls that fail verification receive
-   retryable errors and never consume setup. No out-of-scope probe is retained.
+   retryable errors and never consume setup. No out-of-scope probe is retained. Nooks documents an inbound example in its
+   [webhook guide](https://support.nooks.ai/articles/8109690071-nooks-webhooks-integration-guide).
+   During setup, private logs report each fixed rejection reason at most once per
+   process. They never include request values, headers, keys or raw errors.
    The consumption record survives restart; expiry does not crash the service.
 3. Save `https://<verified-railway-domain>/api/sdr/webhooks/nooks` in Nooks once.
    If Nooks issues a new signing key, the user stores it privately on the verifier.
