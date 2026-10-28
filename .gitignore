@@ -1,0 +1,13 @@
+.venv/
+.review/
+.state/
+__pycache__/
+*.pyc
+.locals.json
+.env
+.env.*
+*.key
+*.pem
+*.sqlite3
+*.db
+local-data/
