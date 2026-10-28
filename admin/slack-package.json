@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "package": "thursday-restaurants-slack-adapter",
+  "status": "uninstalled; controller review required; writes disabled by default",
+  "tested_runtime": {
+    "implementation": "CPython",
+    "version": "3.9.6",
+    "platform": "macOS",
+    "executable": "/usr/bin/python3",
+    "third_party_packages": []
+  },
+  "channel": "C0CCRQUR6G1",
+  "sha256": {
+    "AGENTS.md": "3afecd6c180157c09c64d65c8aae1815d275f327e4fe2f251eb537539a387bff",
+    "README.md": "b52eb294be87c40de97ff165f00106cb1fe0c81fc8315b38c86628a4b49017e9",
+    "run": "2ca3609e8a4e39f5431555fef7db3f9a30ad7914423b032a46fd9e977f3c7112",
+    "admin/__init__.py": "10a0a08317cf02ed12f012ce8a5ac46113b1ae87ecbfc6dcff3154f61e308158",
+    "admin/slack_adapter.py": "a0e03d9924c41e696b95f33ac23d63ba6e4f76b2969d921dadff011b96294cca",
+    "admin/SLACK_INSTALL.md": "1a238d612b03f3c0af1cb557d815f30d4853b8bc233cb2198860a4181e7e9f70",
+    "admin/SLACK_HANDOFF.md": "db08af989d3c4e0a7b5b58996f1923910692f330c2f56d81cf45fd557b58c036",
+    "app/broker_slack.py": "f1637e22d5679eff683f0110104a79b50fdaab0f6a9acd574716b706c3d23026",
+    "app/__init__.py": "991611b188d088e4cacc2fe48f7d2a32d60b34c7e4d3a6dad6470305534964a7",
+    "app/sources.py": "7977ac203a65926e23538645ce9ac49b282e053991e42d10ab4a308838dd55db",
+    "app/service.py": "1360b89ce4a253458abc3e7a01d09294204615d36357e0d5770612a0b609ebab",
+    "app/store.py": "ccf3c851dd9061d3d3b930ffc0fa170d457ea4880e52624d914948c7701223d6",
+    "app/domain.py": "dd26bcd3c1bb9ca1226e18f37303a8dd1b835ac026c57a0eee27c8444409f294",
+    "app/cli.py": "d577917d67f080fd77ff3897c59c949f7f33e10735b12e88b5b6b379f87b4cdd",
+    "tests/test_slack_runtime.py": "264ce2b672ac719f79ffc01be3e1ef5b88b11e08a81d323ef80cde7fc15d91ab"
+  }
+}

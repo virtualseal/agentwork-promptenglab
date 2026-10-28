@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "package": "thursday-restaurants-railway-deployment",
+  "status": "local source only; uninstalled; tests and independent review pending; writes disabled",
+  "runtime": {
+    "available_local": "CPython 3.9.6 macOS /usr/bin/python3",
+    "cloud": "unverified; admin-pinned runtime required",
+    "third_party_packages": []
+  },
+  "project": "2d6b15bd-cdab-4978-9518-2d44820cfc85",
+  "repository": "virtualseal/agentwork-promptenglab",
+  "baseline_sha256": {
+    "proxy.py": "acc798a58d0ef02dd9eaedbd29f5d5874eff13492b963b7fbd56a547187e5174",
+    "railway_projects.py": "ebefedf30614079c5451ec6e01a20c1ee149c592db7937372423d5166abe75c1",
+    "config.json": "2cbb176004d315acbab4cea823edafa56ccee3d86d01d8f29dc9efd3d0bec49e",
+    "client.py": "38548025032e6d5cdfe01d001c5122575f06260215d0989869611442256b2c88"
+  },
+  "sha256": {
+    "AGENTS.md": "3afecd6c180157c09c64d65c8aae1815d275f327e4fe2f251eb537539a387bff",
+    "admin/railway_adapter.py": "b9918c1d7372792bcca5f4e371ce9b1cf6428cb8cc48f0bd71bbbcf46f44a4ca",
+    "admin/prepare_railway.py": "9d6149381eec6d5b8f9516999bef4f5d3abf708bf7ddb7eed2c2cc558d6e00ed",
+    "admin/railway_install.py": "c4eba95e24a52efb32409cfbc7c6ca2d5d6878ce1d521c1af592a50a5240c3ce",
+    "admin/railway_control.py": "bf8cf65a899b993710ef1ac366602d208e2b5d1d53db05c954ac236094306a29",
+    "admin/INSTALL.md": "b925bee4aa5390857782e2cfc288a608f5d9dec6d398e2b00826e8b46d9295f2",
+    "tools/railway_deploy.py": "e65a2f441e1fd8bcf1dc9f28f4d1bd2f95000c825770bb9c07e2deec7f2f2337",
+    "deployment/worker.py": "883e648038b50caaf65b4e8c6810879c5d6a65423306c8b7f0dd8fa02f39237b",
+    "deployment/worker.railway.toml": "37539284e70701d3180e57b5bcde5002a691b02947290346ca763fb88e830ab6",
+    "tests/test_deployment.py": "e67382da234572e8696ad087111c8ea9793ffd2a9a15f9b195f9ee8cdac55594",
+    "admin/slack-package.json": "74bfb840e80d968c44805b24ed80448b32d148027d96f405dcf12623b7c4e36b"
+  }
+}
