@@ -1,3 +1,7 @@
+> Superseded for credential routing: use [PERSONAL_RAILWAY.md](PERSONAL_RAILWAY.md).
+> Legacy shared-credential staging is disabled. The following historical
+> deployment preparation must not be used to activate the personal connection.
+
 # Railway deployment package — local source only
 
 Thursday Restaurants owns `admin/railway_adapter.py` (protected broker operation),
@@ -185,7 +189,7 @@ or cloud service was created in this task.
 `/healthz` reports only child-process liveness. `/readyz` deliberately returns
 503 until Maps/Slack runtime activation is implemented and verified; Railway
 healthcheck uses `/readyz`, so this package cannot accidentally pass deployment
-readiness now. Neither endpoint claims delivery. The CLI still blocks live mode.
+readiness now. Neither endpoint claims delivery. CLI live mode requires the disabled-by-default reviewed configuration gate and complete Maps snapshot.
 The supervisor reaps its child if PORT parsing or HTTP binding fails, escalating
 from terminate to kill after ten seconds. It polls child termination between
 bounded HTTP accept waits and exits nonzero on unexpected child exit, allowing
@@ -229,3 +233,17 @@ version or regenerate the baseline to accept it. Standard rollback deliberately
 refuses a mixed/drifted installation so it cannot overwrite unrelated changes.
 The earlier Slack package's AGENTS.md hash is refreshed for this app-guide update;
 that package and this addition still require controller review on final bytes.
+
+
+## Public Maps milestone
+
+Follow [MAPS_IMPORT.md](MAPS_IMPORT.md) for the repeatable read-only import,
+optional browser prerequisite and atomic local snapshot recovery. Worker Slack
+variable names additionally are `SLACK_BROKER_URL`, `SLACK_BROKER_CAPABILITY`,
+`SLACK_WORKSPACE_ID`, as defined in SLACK_INSTALL.md; no provider key enters the
+worker. Maps import introduces no environment variable. The existing
+`THURSDAY_CONFIG` and `PORT` deployment variables and separate broker boundary
+remain unchanged. Readiness remains 503: fresh import, controller checks and
+independent review, installed Slack, anchor confirmation and runtime/service
+binding remain external gates. No installation, live message or deployment was
+performed. Package hashes describe local bytes, not review or activation approval.
