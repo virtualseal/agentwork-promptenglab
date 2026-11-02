@@ -1,0 +1,26 @@
+{
+  "mode": "preview",
+  "timezone": "America/Los_Angeles",
+  "weekday": 3,
+  "send_time": "17:00",
+  "radius_miles": 10,
+  "anchor": {
+    "name": "Nijiya Market, San Mateo",
+    "address": "1956 S El Camino Real, San Mateo, CA 94403",
+    "latitude": 37.54836,
+    "longitude": -122.31115
+  },
+  "lists": [
+    {
+      "name": "Want to go",
+      "share_url": "https://maps.app.goo.gl/2njkf3jQ9rFdv3oG9"
+    }
+  ],
+  "slack_channel": "C0CCRQUR6G1",
+  "maps_connection": null,
+  "slack_connection": null,
+  "state_path": ".state/weekly-1700-10mi.sqlite3",
+  "maps_snapshot": "local-data/want-to-go-10mi.json",
+  "category_python": "/Users/agentwork/apps/linkedin-agent/.venv/bin/python",
+  "live_reviewed": false
+}

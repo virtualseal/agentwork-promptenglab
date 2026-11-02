@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "integration": "personal-thursday-railway",
+  "project": "2d6b15bd-cdab-4978-9518-2d44820cfc85",
+  "environment": "b862c0ae-b2e6-430f-9abf-5e55b4ba1e66",
+  "repo": "virtualseal/agentwork-promptenglab",
+  "writes_enabled": false
+}

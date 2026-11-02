@@ -1,0 +1,10 @@
+# Build context contains no admin adapters, credentials, state, saved places or Git.
+**
+!app/
+!app/*.py
+!run
+!deployment/
+!deployment/worker.py
+!deployment/worker.config.json
+!deployment/worker.Dockerfile
+!deployment/worker.Dockerfile.dockerignore
