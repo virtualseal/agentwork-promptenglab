@@ -101,13 +101,14 @@ Retain the same database and lock path. The HTTP protocol admits only POST
 URL, token, workspace override, or arbitrary provider parameters. Native Unix
 socket support has not been installed or invented.
 
-Future worker wiring constructs `BrokerSlack(endpoint, capability, workspace)`
+Reviewed worker wiring constructs `BrokerSlack(endpoint, capability, workspace)`
 and passes it to `app.service.run` as its Slack port. Worker configuration names
 reserved for that wiring are `SLACK_BROKER_URL`, `SLACK_BROKER_CAPABILITY`, and
-`SLACK_WORKSPACE_ID`; they are not currently read by the CLI. The capability
+`SLACK_WORKSPACE_ID`; they are read only when live mode passes its configuration gate. The capability
 is a scoped broker credential, never a Slack provider key. Do not put it in the
-non-secret `.locals.json`. No activation command can yet bypass the live CLI
-gate; Maps completeness and later deployment gates must finish first.
+non-secret `.locals.json`. The local `live_reviewed` gate remains false. Complete Maps import, controller
+checks/review, human broker installation and separate activation authorization
+are required before enabling it. `preview` never constructs this port.
 
 ## Recovery
 

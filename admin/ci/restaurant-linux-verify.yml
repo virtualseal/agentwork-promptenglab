@@ -1,0 +1,28 @@
+# Human-reviewed installation only; NOT installed by the agent publishing adapter.
+name: Restaurant native Linux verification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: restaurant-native-linux-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.repository == 'virtualseal/agentwork-promptenglab'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          clean: true
+      - name: Verify native Linux worker at the dispatched commit
+        env:
+          EXPECTED_COMMIT: ${{ github.sha }}
+        run: |
+          id -un
+          id -u
+          pwd
+          python3 -B deployment/native_linux_check.py

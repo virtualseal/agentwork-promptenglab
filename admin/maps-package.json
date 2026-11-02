@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "package": "thursday-restaurants-public-maps-import",
+  "status": "local source; controller tests and independent review pending; complete live import blocked",
+  "runtime": {
+    "worker": "standard library",
+    "category_python": "/Users/agentwork/apps/linkedin-agent/.venv/bin/python",
+    "category_dependency": "existing Playwright 1.60.0 / headless Chromium 1223; not installed by this task"
+  },
+  "sha256": {
+    "AGENTS.md": "fe6659481eff413b0da0766f2f2ae4f1c8105ec05ceb7c648d1b263cdd5e683e",
+    "README.md": "93e7895eb973924f0f9fe245dcfb4bc9732485760894e4d23613e22763577e05",
+    "run": "2ca3609e8a4e39f5431555fef7db3f9a30ad7914423b032a46fd9e977f3c7112",
+    "admin/MAPS_IMPORT.md": "c84002e59c406f471219166b1282113c6fe00f44ba5eaa81eea8ce5bc118a5d6",
+    "app/maps_import.py": "0f5800d2fafdfff9bd1052105584db419c2416ecd06b87d8add14289aadfb6a0",
+    "app/maps_categories.py": "f3557c21b14e51f58f0f2a6d1545513682924fbd1680b1d916c3df5224226b7c",
+    "app/cli.py": "0386dc4caa7650ba1e6fa3d420241eeab20cda2a00caaa18f6e98f15ecda12a7",
+    "app/domain.py": "cf72145692872833ba7a5320bc9b2e8fee43086055905b8f1e2cdee79e381550",
+    "app/sources.py": "7977ac203a65926e23538645ce9ac49b282e053991e42d10ab4a308838dd55db",
+    "app/service.py": "1360b89ce4a253458abc3e7a01d09294204615d36357e0d5770612a0b609ebab",
+    "app/store.py": "ccf3c851dd9061d3d3b930ffc0fa170d457ea4880e52624d914948c7701223d6",
+    "app/broker_slack.py": "f1637e22d5679eff683f0110104a79b50fdaab0f6a9acd574716b706c3d23026",
+    "tests/test_maps_import.py": "34a236711301def5892bc5a46c025c9920cbd4b43de5747469808bbb4e9b4d96",
+    "evals/test_acceptance.py": "a0821d81a43e0000259b63f41cbfeced89dc1f770316921f0ea63988ab273e2d",
+    "admin/INSTALL.md": "41b5f91e6bfcb0fbe86eb755ce0e8f63cfd395b453b6bba818b077bc48d4fb42",
+    "admin/SLACK_INSTALL.md": "d994b0634090aa748acd05472b0c8479536239c8fc2d17f35230126d7d134dab",
+    "admin/slack-package.json": "40a5439432ff39871a373ba75c75c13e623e25937e85b07f8becdb355b3fc5ee",
+    "admin/railway-package.json": "e6c790e0cb4d770d94307357cb2e431127f5a8b19359dd4254bb1bdb125c32df",
+    "restaurant.config.json": "f31c183dc9e26bc8b7d88b2e4f2f83136b1027670e1358e6b6c28d28e981bfc3",
+    "tests/test_current_schedule.py": "ed93eb528390fb78b91b884897099cb1d2d5406ae5f9298ea6e200876dc7fc8c",
+    ".locals.example.json": "b0603f264fc7cc2935e7630d2a603f8469637a2b0b5c9c521a8af5702e52b976"
+  }
+}

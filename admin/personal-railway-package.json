@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "source only; admin installation required; read-only",
+  "baseline_sha256": {
+    "proxy.py": "05e7bd1fddedafc80dd81b1e2760be8268240e495ec2a457a46a6a80f5d3960a",
+    "config.json": "d1cb2dc6641d07355f140b21f05b88626a575e0121ac22b448e178a7f6067219",
+    "client.py": "38548025032e6d5cdfe01d001c5122575f06260215d0989869611442256b2c88"
+  },
+  "sha256": {
+    "admin/__init__.py": "10a0a08317cf02ed12f012ce8a5ac46113b1ae87ecbfc6dcff3154f61e308158",
+    "admin/personal_railway.py": "8b24d28c19daa28c8e6d4fbebe0d2a1521f81e22b1360056e412ad52f276bca2",
+    "admin/prepare_personal_railway.py": "d10d3d72bb5f2ed58d712f9a70fd18a15a624686226ac795b6f77cb54b9cf89d",
+    "admin/install_personal_railway.py": "7353c95bb21ca6df7235a2d95dc3f2adf4dd0735a75777d3eecee7de7125fed7",
+    "admin/railway_install.py": "c4eba95e24a52efb32409cfbc7c6ca2d5d6878ce1d521c1af592a50a5240c3ce",
+    "admin/prepare_railway.py": "fd6e1374186b6b8131ea4998340b5a77c963d300e6740b4547e6a4f9271cac7a",
+    "admin/PERSONAL_RAILWAY.md": "1fc5a4b31dac9ed7609b8ab8126c0394d832d2380c1041dcd35ea39fa59cf362",
+    "tools/railway_deploy.py": "62247551231a0121045bad1b90114e008a0ccd80a26c87d07bf1f730896e1bd5",
+    "tests/test_personal_railway.py": "77da3fb6810ee8bae53a1536c6d2a3e6a54781a7ecde97991681099f30377de3",
+    "tests/test_deployment.py": "f983931532291a2478e2b3520719da928ef63c8e90c7849d3cb266522efa80f1",
+    "AGENTS.md": "fe6659481eff413b0da0766f2f2ae4f1c8105ec05ceb7c648d1b263cdd5e683e",
+    "README.md": "93e7895eb973924f0f9fe245dcfb4bc9732485760894e4d23613e22763577e05",
+    "admin/INSTALL.md": "41b5f91e6bfcb0fbe86eb755ce0e8f63cfd395b453b6bba818b077bc48d4fb42",
+    "railway.connection.json": "7e104b0fbc67591a78f13347842bb0235dca4cb1df043283420f16efc9912ae7",
+    "admin/upgrade_personal_discovery.py": "4a8d921c453c9f018dc121072a5c59a10675274cfc6d9bc546cc5e2700a9daec",
+    "admin/PERSONAL_DISCOVERY.md": "c124871bc1295fa26df362fcda075d6e4573a51e43b0b29e58910580774d4224",
+    "tests/test_personal_upgrade.py": "8802537ebb0e250045a74e80ac8cfba7245715492bf815816a890978808a5cbd"
+  }
+}
