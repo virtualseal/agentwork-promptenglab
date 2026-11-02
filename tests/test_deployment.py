@@ -197,6 +197,7 @@ class DeploymentCLITests(unittest.TestCase):
              patch.object(sys, 'argv', args), \
              patch.object(cli.importlib.util, 'spec_from_file_location', return_value=spec), \
              patch.object(cli.importlib.util, 'module_from_spec', return_value=client), \
+             patch.object(cli,'load_connection',return_value={'environment':E}), \
              redirect_stdout(output):
             try:
                 cli.main()
@@ -205,7 +206,7 @@ class DeploymentCLITests(unittest.TestCase):
         return request
 
     def test_all_operations_consume_response_through_receipt(self):
-        for operation in ('inspect', 'submit', 'reconcile'):
+        for operation in ('inspect',):
             with self.subTest(operation=operation):
                 consumed = []
                 def events():
@@ -217,7 +218,14 @@ class DeploymentCLITests(unittest.TestCase):
                 self.assertEqual(json.loads(self.output), {'status': 'unknown'})
                 self.assertEqual(consumed, [True])
                 self.assertEqual(request.call_count, 1)
-                self.assertEqual(request.call_args[0][1]['operation'], 'deployment.' + operation)
+                self.assertEqual(request.call_args[0][1]['operation'], 'connection.inspect')
+                self.assertEqual(request.call_args[0][1]['integration'],'personal-thursday-railway')
+
+    def test_mutations_fail_before_any_proxy_request(self):
+        for operation in ('submit','reconcile'):
+            with self.assertRaisesRegex(ValueError,'read-only'):
+                self.invoke(operation,iter([]))
+            self.assertEqual(self.output,'')
 
     def test_missing_receipt_or_transfer_failure_never_prints_success(self):
         for fail in (False, True):
@@ -225,7 +233,7 @@ class DeploymentCLITests(unittest.TestCase):
                 yield {'type': 'start'}
                 yield {'type': 'response', 'body': {'status': 'SUCCESS'}}
                 if fail: raise RuntimeError('incomplete transfer')
-            with self.assertRaises(RuntimeError): self.invoke('submit', events())
+            with self.assertRaises(RuntimeError): self.invoke('inspect', events())
             self.assertEqual(self.output, '')
 
 
