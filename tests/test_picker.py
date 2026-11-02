@@ -28,7 +28,7 @@ class Slack:
 class PickerTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
-        self.settings=replace(Settings.load(ROOT/'.locals.example.json'),state_path=str(Path(self.temp.name)/'state.db'))
+        self.settings=replace(Settings.load(ROOT/'tests/fixtures/two-list-settings.json'),state_path=str(Path(self.temp.name)/'state.db'))
         self.store=Store(self.settings.state_path);self.addCleanup(self.store.db.close)
         self.source=FileLists()
     def live(self):return replace(self.settings,mode='live',channel='C_TEST')
