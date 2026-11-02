@@ -8,7 +8,7 @@
     "category_dependency": "existing Playwright 1.60.0 / headless Chromium 1223; not installed by this task"
   },
   "sha256": {
-    "AGENTS.md": "fe6659481eff413b0da0766f2f2ae4f1c8105ec05ceb7c648d1b263cdd5e683e",
+    "AGENTS.md": "a358948dd56c648762c9fb9e43da443b78f02e829ba188a103f3133011dbd060",
     "README.md": "93e7895eb973924f0f9fe245dcfb4bc9732485760894e4d23613e22763577e05",
     "run": "2ca3609e8a4e39f5431555fef7db3f9a30ad7914423b032a46fd9e977f3c7112",
     "admin/MAPS_IMPORT.md": "c84002e59c406f471219166b1282113c6fe00f44ba5eaa81eea8ce5bc118a5d6",
@@ -24,8 +24,8 @@
     "evals/test_acceptance.py": "a0821d81a43e0000259b63f41cbfeced89dc1f770316921f0ea63988ab273e2d",
     "admin/INSTALL.md": "41b5f91e6bfcb0fbe86eb755ce0e8f63cfd395b453b6bba818b077bc48d4fb42",
     "admin/SLACK_INSTALL.md": "d994b0634090aa748acd05472b0c8479536239c8fc2d17f35230126d7d134dab",
-    "admin/slack-package.json": "40a5439432ff39871a373ba75c75c13e623e25937e85b07f8becdb355b3fc5ee",
-    "admin/railway-package.json": "e6c790e0cb4d770d94307357cb2e431127f5a8b19359dd4254bb1bdb125c32df",
+    "admin/slack-package.json": "e12528b0ffb07cee531f9d96de1e6bc5a710ca9ab2c79bc0802ad5f33e700c0d",
+    "admin/railway-package.json": "a697fdbe83dcfd5138c13e897ebe041276e14ef95d86e1e6cd04a348857680a1",
     "restaurant.config.json": "f31c183dc9e26bc8b7d88b2e4f2f83136b1027670e1358e6b6c28d28e981bfc3",
     "tests/test_current_schedule.py": "ed93eb528390fb78b91b884897099cb1d2d5406ae5f9298ea6e200876dc7fc8c",
     ".locals.example.json": "b0603f264fc7cc2935e7630d2a603f8469637a2b0b5c9c521a8af5702e52b976"

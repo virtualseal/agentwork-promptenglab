@@ -11,7 +11,7 @@
   },
   "channel": "C0CCRQUR6G1",
   "sha256": {
-    "AGENTS.md": "fe6659481eff413b0da0766f2f2ae4f1c8105ec05ceb7c648d1b263cdd5e683e",
+    "AGENTS.md": "a358948dd56c648762c9fb9e43da443b78f02e829ba188a103f3133011dbd060",
     "README.md": "93e7895eb973924f0f9fe245dcfb4bc9732485760894e4d23613e22763577e05",
     "run": "2ca3609e8a4e39f5431555fef7db3f9a30ad7914423b032a46fd9e977f3c7112",
     "admin/__init__.py": "10a0a08317cf02ed12f012ce8a5ac46113b1ae87ecbfc6dcff3154f61e308158",

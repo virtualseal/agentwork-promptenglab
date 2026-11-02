@@ -257,3 +257,8 @@ and deployment/worker.py retain UID502. No production credentials, Slack calls,
 merge or deployment are authorized. See admin/ci/README.md for exact human-only
 workflow installation and Actions run instructions; the template stays inactive
 until an administrator installs it through the supported workflow path.
+
+The hosted workflow is installed only on the default branch and accepts an
+explicit reviewed source_sha. Checkout and EXPECTED_COMMIT use that immutable
+source SHA rather than the workflow's own commit; no duplicate workflow install
+on the source branch is needed. Hosted event SHA remains recorded by GitHub.

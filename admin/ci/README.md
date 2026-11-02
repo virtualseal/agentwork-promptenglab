@@ -32,9 +32,11 @@ Admin installation/run steps after source publication:
    workflow_dispatch registration must be available on the repository default
    branch to appear in Actions; any required default-branch change is human
    administration, not authorized agent merge/publication.
-3. Open Actions -> Restaurant native Linux verification -> Run workflow. Select
-   the reviewed branch including the installed workflow. Record its immutable SHA.
-4. Confirm the run checks out that exact SHA and all required steps pass. Read
+3. Open Actions -> Restaurant native Linux verification -> Run workflow on the
+   default branch. Enter the exact reviewed source commit in source_sha. The
+   workflow checks out that immutable source commit; it need not be installed
+   on the source branch as well. Never enter a branch name in the SHA field.
+4. Confirm the run checks out that exact source SHA and all required steps pass. Read
    .review/native-linux/result.json and its invocation-specific operation/check
    logs on the runner if diagnosing a failed job. The workflow prints the result
    and failed-check logs so failure evidence is accessible in Actions.

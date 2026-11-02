@@ -2,6 +2,11 @@
 name: Restaurant native Linux verification
 on:
   workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed immutable source commit (40 lowercase hex characters)
+        required: true
+        type: string
 permissions:
   contents: read
 concurrency:
@@ -13,14 +18,18 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
+      - name: Validate requested immutable source
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: python3 -c 'import os,re; assert re.fullmatch(r"[0-9a-f]{40}",os.environ["SOURCE_SHA"]), "Immutable source SHA required"'
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ inputs.source_sha }}
           persist-credentials: false
           clean: true
       - name: Verify native Linux worker at the dispatched commit
         env:
-          EXPECTED_COMMIT: ${{ github.sha }}
+          EXPECTED_COMMIT: ${{ inputs.source_sha }}
         run: |
           id -un
           id -u

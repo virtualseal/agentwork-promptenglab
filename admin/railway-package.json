@@ -16,7 +16,7 @@
     "client.py": "38548025032e6d5cdfe01d001c5122575f06260215d0989869611442256b2c88"
   },
   "sha256": {
-    "AGENTS.md": "fe6659481eff413b0da0766f2f2ae4f1c8105ec05ceb7c648d1b263cdd5e683e",
+    "AGENTS.md": "a358948dd56c648762c9fb9e43da443b78f02e829ba188a103f3133011dbd060",
     "admin/railway_adapter.py": "b9918c1d7372792bcca5f4e371ce9b1cf6428cb8cc48f0bd71bbbcf46f44a4ca",
     "admin/prepare_railway.py": "fd6e1374186b6b8131ea4998340b5a77c963d300e6740b4547e6a4f9271cac7a",
     "admin/railway_install.py": "c4eba95e24a52efb32409cfbc7c6ca2d5d6878ce1d521c1af592a50a5240c3ce",
@@ -26,6 +26,6 @@
     "deployment/worker.py": "883e648038b50caaf65b4e8c6810879c5d6a65423306c8b7f0dd8fa02f39237b",
     "deployment/worker.railway.toml": "37539284e70701d3180e57b5bcde5002a691b02947290346ca763fb88e830ab6",
     "tests/test_deployment.py": "f983931532291a2478e2b3520719da928ef63c8e90c7849d3cb266522efa80f1",
-    "admin/slack-package.json": "40a5439432ff39871a373ba75c75c13e623e25937e85b07f8becdb355b3fc5ee"
+    "admin/slack-package.json": "e12528b0ffb07cee531f9d96de1e6bc5a710ca9ab2c79bc0802ad5f33e700c0d"
   }
 }
