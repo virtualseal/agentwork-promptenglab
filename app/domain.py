@@ -108,7 +108,7 @@ def eligible(places, settings):
 def choose(places,settings,rng=None):
     candidates=eligible(places,settings)
     if not candidates:
-        raise Blocked('Neither list contains an eligible restaurant within the configured radius')
+        raise Blocked('No configured list contains an eligible restaurant within the configured radius')
     return (rng or random.SystemRandom()).choice(candidates)
 
 
@@ -132,6 +132,9 @@ class Settings:
     state_path: str
     anchor_name: str
     anchor_address: str
+    maps_snapshot: str = None
+    category_python: str = None
+    live_reviewed: bool = False
 
     @classmethod
     def load(cls,path):
@@ -156,8 +159,8 @@ class Settings:
         if isinstance(radius,bool) or not isinstance(radius,(int,float)) or not math.isfinite(radius) or radius<=0:
             raise ValueError('Radius must be a finite positive number')
         lists=data.get('lists')
-        if not isinstance(lists,list) or len(lists)!=2 or len({item['name'] for item in lists})!=2:
-            raise ValueError('Configure both distinct source lists')
+        if not isinstance(lists,list) or not 1<=len(lists)<=2 or any(not isinstance(item,dict) or not isinstance(item.get('name'),str) for item in lists) or len({item.get('name') for item in lists})!=len(lists):
+            raise ValueError('Configure one or two distinct source lists')
         refs=[]
         for item in lists:
             if not isinstance(item.get('name'),str) or not item['name'].strip():raise ValueError('List name required')
@@ -169,8 +172,10 @@ class Settings:
         anchor=data['anchor']
         return cls(data['mode'],zone,stamp,float(radius),coordinate(anchor['latitude'],90),
                    coordinate(anchor['longitude'],180),tuple(refs),channel or 'preview',
-                   str((path.parent/data['state_path']).resolve()),anchor['name'],anchor['address'])
+                   str((path.parent/data['state_path']).resolve()),anchor['name'],anchor['address'],
+                   str((path.parent/data['maps_snapshot']).resolve()) if data.get('maps_snapshot') else None,
+                   data.get('category_python'),data.get('live_reviewed') is True)
 
     def context(self):
-        body={k:getattr(self,k) for k in ('mode','timezone','send_time','radius_miles','latitude','longitude','lists','channel')}
+        body={k:getattr(self,k) for k in ('mode','timezone','send_time','radius_miles','latitude','longitude','lists','channel','maps_snapshot')}
         return hashlib.sha256(json.dumps(body,sort_keys=True).encode()).hexdigest()
